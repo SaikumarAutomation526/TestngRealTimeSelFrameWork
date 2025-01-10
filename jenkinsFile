@@ -1,5 +1,12 @@
 pipeline{
 agent any
+  environment {
+        RECIPIENT_EMAIL = 'saikumarkn1610526@gmail.com'
+    }
+
+    triggers {
+        cron('H 0 * * 1') // Example: Every Monday at 6 AM
+    }
 stages 
 {
 stage('Build') 

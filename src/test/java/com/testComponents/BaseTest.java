@@ -13,7 +13,9 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.bidi.module.Browser;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
@@ -40,8 +42,10 @@ public class BaseTest {
 		String broswer=p.getProperty("browser1");
       
 		if(broswer.equalsIgnoreCase("chrome")) {
+			ChromeOptions ch=new ChromeOptions();
+			ch.addArguments("headless");
 			WebDriverManager.chromedriver().setup();
-			driver=new ChromeDriver();
+			driver=new ChromeDriver(ch);
 
 		}
 		else if(broswer.equalsIgnoreCase("firefox")) {
